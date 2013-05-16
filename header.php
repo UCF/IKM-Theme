@@ -50,7 +50,7 @@
         <div id="header-background" class="wide">
             <div class="container">
                 <div class="row">
-                    <div id="header" class="span9">
+                    <div id="header" class="span10">
                         <h1><a href="<?=bloginfo('url')?>"><?=bloginfo('name')?></a></h1>
                         <?php $options = get_option(THEME_OPTIONS_NAME);?>
                     </div>
