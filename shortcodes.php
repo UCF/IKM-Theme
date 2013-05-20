@@ -382,35 +382,28 @@ function sc_post_type_search($params=array(), $content='') {
 		}
 		?>
 		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
+			<div class="row">
+			<? $count = 0; ?>
 			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
-					<div>
+				<? if ($section_posts) { ?>
+					<? 	if ($count % $params['column_count'] == 0 && $count !== 0) {
+						print '</div><div class="row">';
+					} ?>
+					<div class="<?=$params['column_width']?>">
 						<h3><?=esc_html($section_title)?></h3>
-						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
-									<div class="<?=$params['column_width']?> <?=$params['column_class']; ?>">
-										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
-											<li class="<?=$post_type->get_document_application($post); ?>" data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
-										</ul>
-									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
-						</div>
+						<ul>
+						<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+							<li data-post-id="<?=$post->ID?>" <?=($post_type->get_document_application($post)) ? 'class="'.$post_type->get_document_application($post).'"' : ''?>><?=$post_type->toHTML($post)?><span class="search-post-pgsection"><?=$section_title?></span></li>
+						<? } ?>
+						</ul>
 					</div>
-				<? } ?>
-			<? } ?>
+				<? $count++; 
+				} // endif ?>
+			<? } // endforeach ?>
+			</div>
 		</div>
-		<?
-	}
-	?> </div> <?
+	<? } ?>
+	</div> <?
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
