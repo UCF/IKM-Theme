@@ -182,6 +182,7 @@ function sc_post_type_search($params=array(), $content='') {
 	$defaults = array(
 		'post_type_name'         => 'post',
 		'taxonomy'               => 'category',
+		'taxonomy_term'			 => '',
 		'show_empty_sections'    => false,
 		'non_alpha_section_name' => 'Other',
 		'column_width'           => 'span4',
@@ -190,7 +191,6 @@ function sc_post_type_search($params=array(), $content='') {
 		'order'                  => 'ASC',
 		'show_sorting'           => True,
 		'default_sorting'        => 'term',
-		'show_sorting'           => True,
 		'meta_key'               => '',
 		'meta_value'             => '',
         'column_class'           => ''
@@ -216,7 +216,12 @@ function sc_post_type_search($params=array(), $content='') {
 	if(!isset($params['default_search_text'])) {
 		$params['default_search_text'] = 'Find a '.$post_type->singular_name;
 	}
-
+	
+	// Set default search field label if the user didn't
+	if(!isset($params['default_search_label'])) {
+		$params['default_search_label'] = 'Find a '.$post_type->singular_name;
+	}
+	
 	// Register if the search data with the JS PostTypeSearchDataManager
 	// Format is array(post->ID=>terms) where terms include the post title
 	// as well as all associated tag names
@@ -238,30 +243,76 @@ function sc_post_type_search($params=array(), $content='') {
 		}
 	</script>
 	<?
-
-	// Split up this post type's posts by term
+	// Set up a post query
 	$by_term = array();
-	foreach(get_terms($params['taxonomy']) as $term) {
-		$posts = get_posts(array(
-			'numberposts' => -1,
-			'post_type'   => $params['post_type_name'],
-			'tax_query'   => array(
-				array(
-					'taxonomy' => $params['taxonomy'],
-					'field'    => 'id',
-					'terms'    => $term->term_id
-				)
-			),
-            'meta_key'    => $params['meta_key'],
-            'meta_value'  => $params['meta_value'],
-			'orderby'     => $params['order_by'],
-			'order'       => $params['order']
-		));
 
-		if(count($posts) == 0 && $params['show_empty_sections']) {
-			$by_term[$term->name] = array();
-		} else {
-			$by_term[$term->name] = $posts;
+	$args = array(
+		'numberposts' => -1,
+		'post_type'   => $params['post_type_name'],
+		'tax_query'   => array(
+			array(
+				'taxonomy' => $params['taxonomy'],
+				'field'    => 'id',
+				'terms'    => '',
+			)
+		),
+		'orderby'     => $params['order_by'],
+		'order'       => $params['order'],
+	);
+
+	// Handle meta key and value query
+	if ($params['meta_key'] && $params['meta_value']) {
+		$args['meta_key'] = $params['meta_key'];
+		$args['meta_value'] = $params['meta_value'];
+	}
+	
+		// Split up this post type's posts by term
+	if ($params['taxonomy_term'] !== '') {
+		// if a specific taxonomy term is specified, get just its children
+		$termchildren = get_term_children(get_term_by('slug', $params['taxonomy_term'], $params['taxonomy'])->term_id, $params['taxonomy']);
+
+		$termchildren_byname = array();
+		$termchildren_sorted = array();
+
+		// Create new array that contains term ID and Name data per term
+		foreach ($termchildren as $termid) {
+			$term = get_term_by('id', $termid, $params['taxonomy']);
+			$termchildren_byname[$term->slug] .= $termid;
+		}
+
+		// Sort the $sorted_termchildren results by Name
+		ksort($termchildren_byname);			
+
+		// Replace $termchildren with the newly sorted results
+		foreach ($termchildren_byname as $termname => $termid) {
+			$termchildren_sorted[] .= $termid;
+		}
+		$termchildren = $termchildren_sorted;
+
+
+		foreach ($termchildren as $term) {
+			$args['tax_query'][0]['terms'] = $term;
+			$posts = get_posts($args);
+
+			if(count($posts) == 0 && $params['show_empty_sections']) {
+				$by_term[get_term_by('id', $term, $params['taxonomy'])->name] = array();
+			} else {
+				$by_term[get_term_by('id', $term, $params['taxonomy'])->name] = $posts;
+			}
+		}
+	}
+	// If no taxonomy_term is specified, grab all taxonomy terms
+	// for the given taxonomy
+	else {
+		foreach(get_terms($params['taxonomy']) as $term) { // get_terms defaults to an orderby=name, order=asc value
+			$args['tax_query'][0]['terms'] = $term->term_id;
+			$posts = get_posts($args);
+
+			if(count($posts) == 0 && $params['show_empty_sections']) {
+				$by_term[$term->name] = array();
+			} else {
+				$by_term[$term->name] = $posts;
+			}
 		}
 	}
 
@@ -331,35 +382,28 @@ function sc_post_type_search($params=array(), $content='') {
 		}
 		?>
 		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
+			<div class="row">
+			<? $count = 0; ?>
 			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
-					<div>
+				<? if ($section_posts) { ?>
+					<? 	if ($count % $params['column_count'] == 0 && $count !== 0) {
+						print '</div><div class="row">';
+					} ?>
+					<div class="<?=$params['column_width']?>">
 						<h3><?=esc_html($section_title)?></h3>
-						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
-									<div class="<?=$params['column_width']?> <?=$params['column_class']; ?>">
-										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
-											<li class="<?=$post_type->get_document_application($post); ?>" data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
-										</ul>
-									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
-						</div>
+						<ul>
+						<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+							<li data-post-id="<?=$post->ID?>" <?=($post_type->get_document_application($post)) ? 'class="'.$post_type->get_document_application($post).'"' : ''?>><?=$post_type->toHTML($post)?><span class="search-post-pgsection"><?=$section_title?></span></li>
+						<? } ?>
+						</ul>
 					</div>
-				<? } ?>
-			<? } ?>
+				<? $count++; 
+				} // endif ?>
+			<? } // endforeach ?>
+			</div>
 		</div>
-		<?
-	}
-	?> </div> <?
+	<? } ?>
+	</div> <?
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
