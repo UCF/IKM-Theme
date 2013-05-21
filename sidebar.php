@@ -7,10 +7,5 @@
 	<p class="post-search-header-text">Search This Section</p>
 	<?=do_shortcode('[post-type-search post_type_name="resourcelink" taxonomy="pg_sections" taxonomy_term="'.$taxonomy_term.'" column_width="span3" column_count="1" show_empty_sections=true default_search_text="Find a Resource"]')?>
 					
-	&nbsp;
-	<?=do_shortcode('[site-contact-email]')?>
-			
-	&nbsp;
-	<?=do_shortcode('[site-contact-info]')?>
 
 <?php endif;?>
