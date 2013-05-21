@@ -134,4 +134,5 @@ class PgSections extends CustomTaxonomy
 
 		$hierarchical = True;
 } // END class 
+
 ?>

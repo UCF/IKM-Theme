@@ -183,17 +183,16 @@ function sc_post_type_search($params=array(), $content='') {
 		'post_type_name'         => 'post',
 		'taxonomy'               => 'category',
 		'taxonomy_term'			 => '',
+		'meta_key'				 => '',
+		'meta_value'			 => '',
 		'show_empty_sections'    => false,
 		'non_alpha_section_name' => 'Other',
 		'column_width'           => 'span4',
 		'column_count'           => '3',
 		'order_by'               => 'title',
 		'order'                  => 'ASC',
-		'show_sorting'           => True,
+		'show_sorting'           => true,
 		'default_sorting'        => 'term',
-		'meta_key'               => '',
-		'meta_value'             => '',
-        'column_class'           => ''
 	);
 
 	$params = ($params === '') ? $defaults : array_merge($defaults, $params);
@@ -216,17 +215,17 @@ function sc_post_type_search($params=array(), $content='') {
 	if(!isset($params['default_search_text'])) {
 		$params['default_search_text'] = 'Find a '.$post_type->singular_name;
 	}
-	
+
 	// Set default search field label if the user didn't
 	if(!isset($params['default_search_label'])) {
 		$params['default_search_label'] = 'Find a '.$post_type->singular_name;
 	}
-	
+
 	// Register if the search data with the JS PostTypeSearchDataManager
 	// Format is array(post->ID=>terms) where terms include the post title
 	// as well as all associated tag names
 	$search_data = array();
-	foreach(get_posts(array('numberposts' => -1, 'post_type' => $params['post_type_name'], 'meta_key' => $params['meta_key'], 'meta_value' => $params['meta_value'])) as $post) {
+	foreach(get_posts(array('numberposts' => -1, 'post_type' => $params['post_type_name'])) as $post) {
 		$search_data[$post->ID] = array($post->post_title);
 		foreach(wp_get_object_terms($post->ID, 'post_tag') as $term) {
 			$search_data[$post->ID][] = $term->name;
@@ -243,6 +242,7 @@ function sc_post_type_search($params=array(), $content='') {
 		}
 	</script>
 	<?
+
 	// Set up a post query
 	$by_term = array();
 
@@ -265,8 +265,8 @@ function sc_post_type_search($params=array(), $content='') {
 		$args['meta_key'] = $params['meta_key'];
 		$args['meta_value'] = $params['meta_value'];
 	}
-	
-		// Split up this post type's posts by term
+
+	// Split up this post type's posts by term
 	if ($params['taxonomy_term'] !== '') {
 		// if a specific taxonomy term is specified, get just its children
 		$termchildren = get_term_children(get_term_by('slug', $params['taxonomy_term'], $params['taxonomy'])->term_id, $params['taxonomy']);
@@ -318,14 +318,10 @@ function sc_post_type_search($params=array(), $content='') {
 
 	// Split up this post type's posts by the first alpha character
 	$by_alpha = array();
-	$by_alpha_posts = get_posts(array(
-		'numberposts' => -1,
-		'post_type'   => $params['post_type_name'],
-		'orderby'     => 'title',
-		'order'       => 'alpha',
-        'meta_key'    => $params['meta_key'],
-        'meta_value'  => $params['meta_value']
-	));
+	$args['orderby'] = 'title';
+	$args['order'] = 'ASC';
+	$args['tax_query'] = '';
+	$by_alpha_posts = get_posts($args);
 	foreach($by_alpha_posts as $post) {
 		if(preg_match('/([a-zA-Z])/', $post->post_title, $matches) == 1) {
 			$by_alpha[strtoupper($matches[1])][] = $post;
@@ -353,15 +349,16 @@ function sc_post_type_search($params=array(), $content='') {
 	<div class="post-type-search">
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
-				<label style="display:none;">Search</label>
+				<label><?=$params['default_search_label']?></label>
 				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
 		<? if($params['show_sorting']) { ?>
+		<span class="search-toggle-text">Sort By: </span>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
-			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
+			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i> <span class="search-toggle-text">Category</span></button>
+			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i> <span class="search-toggle-text">Alphabetical</span></button>
 		</div>
 		<? } ?>
 	<?
