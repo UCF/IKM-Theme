@@ -256,7 +256,7 @@ class ResourceLink extends CustomPostType{
         $use_order      = True,
         $use_shortcode  = True,
         $use_metabox    = True,
-        $taxonomies     = array('post_tag', 'category');
+        $taxonomies     = array('post_tag', 'category', 'pg_sections');
 
     public static function get_page_dropdown() {
         $args = array(
@@ -559,6 +559,12 @@ class Page extends CustomPostType {
 				'id'   => $prefix.'hide_fold',
 				'type' => 'checkbox',
 			),
+			array(
+				'name' => 'Post Search Taxonomy_Term',
+				'desc' => '(Optional) By default, pages with a two-column layout will pull post search results by the taxonomy term that matches the current page slug.  To pull posts from a different taxonomy term, type the term slug (e.g. "some-term-name") here.',
+				'id'   => $prefix.'taxonomy_term',
+				'type' => 'text',
+			),			
             array(
                 'name' => 'Stylesheet',
                 'desc' => '',
