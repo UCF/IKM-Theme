@@ -10,7 +10,7 @@
 				<div class="span12" id="page-top">
 					
 					<? if(!is_front_page())	{ ?>
-						<h1><?php the_title();?></h1>
+						<h2><?php the_title();?></h2>
 					<? } ?>
 					
 					<?php if (get_post_meta($post->ID, 'page_subheader', TRUE)) {
