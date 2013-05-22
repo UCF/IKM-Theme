@@ -186,6 +186,7 @@ function sc_post_type_search($params=array(), $content='') {
 		'meta_key'				 => '',
 		'meta_value'			 => '',
 		'show_empty_sections'    => false,
+		'document_list'			 => false,
 		'non_alpha_section_name' => 'Other',
 		'column_width'           => 'span4',
 		'column_count'           => '3',
@@ -346,7 +347,10 @@ function sc_post_type_search($params=array(), $content='') {
 
 	ob_start();
 	?>
+	
+
 	<div class="post-type-search">
+	<? if (!$params['document_list']) { ?>
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label><?=$params['default_search_label']?></label>
@@ -361,8 +365,9 @@ function sc_post_type_search($params=array(), $content='') {
 			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i> <span class="search-toggle-text">Alphabetical</span></button>
 		</div>
 		<? } ?>
+	<? } ?>
+	
 	<?
-
 	foreach($sections as $id => $section) {
 		$hide = false;
 		switch($id) {
