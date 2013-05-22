@@ -385,7 +385,7 @@ function sc_post_type_search($params=array(), $content='') {
 		?>
 		<? if (!$params['document_list']) { ?>
 			<div class="post-type-search-document">
-		<? else { ?>
+		<? } else { ?>
 			<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
 		<? } ?>
 			<div class="row">
