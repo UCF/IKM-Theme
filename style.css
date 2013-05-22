@@ -42,6 +42,19 @@ select#UCFHBHeaderLinks {
 
 /* Site Styles */
 
+.breadcrumb {
+    border-radius: 4px 4px 4px 4px;
+    list-style: none outside none;
+    margin: 0 0 20px;
+    padding: 8px 15px;
+}
+
+.breadcrumb a {
+	text-decoration: underline;
+	font-size: .8em;
+	color: #999999;
+}
+
 .end {clear: both; height: 1px;}
 
 .row-border-bottom-top {margin-left:20px; overflow: hidden;}
@@ -196,7 +209,7 @@ select#UCFHBHeaderLinks {
 #header {margin-bottom: 0; margin-top: 10px;}
 article h1, h2, h3 {font-weight: 400; font-family: 'TrocchiRegular', Georgia, serif;}
 p{font-weight: 400; font-family: Georgia, serif;}
-article h2{margin-top: 35px;}
+article h2{margin-top: 15px;}
 article h3, h4{margin-top: 20px;}
 #header-menu.menu.horizontal li {margin-bottom: 5px; margin-right: 9px;}
 
