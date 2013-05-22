@@ -351,7 +351,7 @@ function sc_post_type_search($params=array(), $content='') {
 	
 
 	<div class="post-type-search">
-	<? if (!$params['default_sorting'] == 'document']) { ?>
+	<? if (!$params['default_sorting'] == 'document') { ?>
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label><?=$params['default_search_label']?></label>
@@ -373,17 +373,17 @@ function sc_post_type_search($params=array(), $content='') {
 		$hide = false;
 		switch($id) {
 			case 'post-type-search-alpha':
-				if($params['default_sorting'] == 'document') {
+				if($params['default_sorting'] == 'term' || $params['default_sorting'] == 'document') {
 					$hide = True;
 				}
 				break;
 			case 'post-type-search-term':
-				if($params['default_sorting'] == 'document') {
+				if($params['default_sorting'] == 'alpha' || $params['default_sorting'] == 'document') {
 					$hide = True;
 				}
 				break;
 			case 'post-type-search-document':
-				if($params['default_sorting'] == 'term') {
+				if($params['default_sorting'] == 'term' || $params['default_sorting'] == 'alpha') {
 					$hide = True;
 				}
 				break;				
