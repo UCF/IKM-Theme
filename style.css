@@ -329,7 +329,17 @@ article h3, h4{margin-top: 20px;}
 	box-shadow: 0 0 4px rgba(0, 0, 0, .1); 
 	overflow: hidden;
 }
+.post-type-search-document {
+	padding: 10px;
+	overflow: hidden;
+}
 .post-type-search-term>div, .post-type-search-alpha>div { margin-left: 0; margin-right: 5px; }
+.post-type-search-document h3 {
+	font-size: 17.5px; 
+	color: #993300; 
+	text-transform: uppercase; 
+	margin-bottom: 5px;
+}
 .post-type-search-term h3, .post-type-search-alpha h3 { 
 	font-size: 11px !important; 
 	color: #999; 

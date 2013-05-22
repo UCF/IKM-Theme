@@ -383,7 +383,11 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
+		<? if (!$params['document_list']) { ?>
+			<div class="post-type-search-document">
+		<? else { ?>
+			<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
+		<? } ?>
 			<div class="row">
 			<? $count = 0; ?>
 			<? foreach($section as $section_title => $section_posts) { ?>
