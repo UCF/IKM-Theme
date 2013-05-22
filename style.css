@@ -43,7 +43,7 @@ select#UCFHBHeaderLinks {
 /* Site Styles */
 
 .breadcrumb {
-    border-radius: 4px 4px 4px 4px;
+	background-color: #ffffff;
     list-style: none outside none;
     margin: 0 0 20px;
     padding: 8px 15px;
@@ -53,6 +53,55 @@ select#UCFHBHeaderLinks {
 	text-decoration: underline;
 	font-size: .8em;
 	color: #999999;
+}
+
+.spotlight .box, .spotlight .box p, .spotlight .box ul {
+    font-size: 12px;
+}
+.spotlight .box ul {
+    margin-left: 14px;
+}
+.spotlight .box h3 {
+    color: #D6AA15;
+    font-size: 15px;
+    line-height: 15px;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+#degrees-awarded {
+    background-color: #fdde60;
+    border-radius: 8px 8px 8px 8px;
+}
+#degrees-awarded .wrap {
+    font-family: "Trebuchet MS",sans-serif;
+    padding: 10px;
+}
+#degrees-awarded .wrap h3 {
+    color: #FFFFFF;
+    font-size: 17px;
+    line-height: 17px;
+    margin-top: 0;
+}
+#degrees-awarded .wrap table {
+    width: 100%;
+}
+#degrees-awarded .wrap table caption {
+    font-weight: bold;
+    text-align: left;
+}
+#degrees-awarded .wrap table th, #degrees-awarded .wrap table td {
+    border-top: 0 none;
+    font-size: 12.5px;
+    padding: 1px;
+}
+#degrees-awarded .wrap table tr:last-child {
+    border-top: 1px solid #000000;
+}
+#degrees-awarded .wrap table tr:last-child td:last-child {
+    font-weight: bold;
+}
+#degrees-awarded .wrap p {
+    font-size: 10px;
 }
 
 .end {clear: both; height: 1px;}
