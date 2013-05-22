@@ -342,7 +342,7 @@ function sc_post_type_search($params=array(), $content='') {
 
 	$sections = array(
 		'post-type-search-term'  => $by_term,
-		'post-type-search-alpha' => $by_alpha
+		'post-type-search-alpha' => $by_alpha,
 		'post-type-search-document' => $by_term
 	);
 
