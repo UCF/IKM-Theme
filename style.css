@@ -338,6 +338,7 @@ article h3, h4{margin-top: 20px;}
 	font-size: 17.5px; 
 	color: #993300; 
 	text-transform: uppercase; 
+	line-heigh 20px !important;
 	margin-bottom: 5px;
 }
 .post-type-search-term h3, .post-type-search-alpha h3 { 

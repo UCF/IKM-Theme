@@ -342,7 +342,8 @@ function sc_post_type_search($params=array(), $content='') {
 
 	$sections = array(
 		'post-type-search-term'  => $by_term,
-		'post-type-search-alpha' => $by_alpha,
+		'post-type-search-alpha' => $by_alpha
+		'post-type-search-document' => $by_term
 	);
 
 	ob_start();
@@ -350,7 +351,7 @@ function sc_post_type_search($params=array(), $content='') {
 	
 
 	<div class="post-type-search">
-	<? if (!$params['document_list']) { ?>
+	<? if (!$params['default_sorting'] == 'document']) { ?>
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label><?=$params['default_search_label']?></label>
@@ -372,22 +373,23 @@ function sc_post_type_search($params=array(), $content='') {
 		$hide = false;
 		switch($id) {
 			case 'post-type-search-alpha':
-				if($params['default_sorting'] == 'term') {
+				if($params['default_sorting'] == 'term' or $params['default_sorting'] == 'document') {
 					$hide = True;
 				}
 				break;
 			case 'post-type-search-term':
-				if($params['default_sorting'] == 'alpha') {
+				if($params['default_sorting'] == 'alpha' or $params['default_sorting'] == 'document') {
 					$hide = True;
 				}
 				break;
+			case 'post-type-search-document':
+				if($params['default_sorting'] == 'term' or $params['default_sorting'] == 'alpha' ) {
+					$hide = True;
+				}
+				break;				
 		}
 		?>
-		<? if ($params['document_list']) { ?>
-			<div class="post-type-search-document">
-		<? } else { ?>
-			<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
-		<? } ?>
+		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
 			<div class="row">
 			<? $count = 0; ?>
 			<? foreach($section as $section_title => $section_posts) { ?>
