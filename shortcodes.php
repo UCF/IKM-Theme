@@ -351,7 +351,7 @@ function sc_post_type_search($params=array(), $content='') {
 	
 
 	<div class="post-type-search">
-	<? if (!$params['default_sorting'] == 'document') { ?>
+	<? if (!$params['default_sorting'] == 'document']) { ?>
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label><?=$params['default_search_label']?></label>
