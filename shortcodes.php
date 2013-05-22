@@ -202,7 +202,7 @@ function sc_post_type_search($params=array(), $content='') {
 	$params['column_count']        = is_numeric($params['column_count']) ? (int)$params['column_count'] : $defaults['column_count'];
 	$params['show_sorting']        = (bool)$params['show_sorting'];
 
-	if(!in_array($params['default_sorting'], array('term', 'alpha'))) {
+	if(!in_array($params['default_sorting'], array('term', 'alpha', 'document'))) {
 		$params['default_sorting'] = $default['default_sorting'];
 	}
 
