@@ -1,3 +1,4 @@
+		<div id="footer-wrap">
 			<div id="footer" class="container">
 				<div class="row">
                     <div class="span12">
@@ -62,6 +63,7 @@
                 </div>
 			</div>
 		</div><!-- container -->
+	</div>
 	</body>
 	<!--[if IE]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
