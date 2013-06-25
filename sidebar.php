@@ -14,7 +14,7 @@
 		'menu_id' => 'sidebar-menu', 
 		'fallback_cb' => false,
 		'depth' => 0,
-		'walker' => new Bootstrap_Walker_Nav_Menu(),
+		'walker' => new wp_bootstrap_navwalker(),
 		'items_wrap' => '<ul><li id="item-id">'.$taxonomy_term.'</li>%3$s</ul>'
 		));
 	?>
