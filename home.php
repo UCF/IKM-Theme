@@ -59,7 +59,4 @@
             </div>
         </div>
     </div>
-    <div id="events" class="container">
-        <?php get_template_part('includes/below-the-fold'); ?>
-    </div>
 <?php get_footer();?>
