@@ -1,20 +1,14 @@
 			<div id="footer" class="container">
 				<div class="row">
                     <div class="span12">
-				<?=wp_nav_menu(array(
-					'theme_location' => 'footer-menu', 
-					'container' => 'false', 
-					'menu_class' => 'menu horizontal', 
-					'menu_id' => 'footer-menu', 
-					'fallback_cb' => false,
-					'depth' => 1,
-					'walker' => new Bootstrap_Walker_Nav_Menu()
-					));
-				?>
+	
                     </div>
                 </div>
                 <div class="row">
-                    <div class="span12">
+					<div class="span4">
+						<img id="footer-logo" title="UCF 50" alt="UCF 50" src="<?=THEME_IMG_URL?>/50th-220x80.png">
+					</div>
+                    <div class="span8">
                         <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Two')):?>
                             <?php $options = get_option(THEME_OPTIONS_NAME);?>
                             <div id="footer-info">
@@ -53,6 +47,18 @@
                             </div>
                         <?php endif;?>
                     </div>
+					<div class="span4">
+					 	<?=wp_nav_menu(array(
+							'theme_location' => 'footer-menu', 
+							'container' => 'false', 
+							'menu_class' => 'menu vertical', 
+							'menu_id' => 'footer-menu', 
+							'fallback_cb' => false,
+							'depth' => 1,
+							'walker' => new Bootstrap_Walker_Nav_Menu()
+							));
+						?>
+					</div>
                 </div>
 			</div>
 		</div><!-- container -->

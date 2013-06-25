@@ -1,7 +1,7 @@
 /*   
 Theme Name: IKM Theme
-Author: UCF Web Communications
-Github Theme URI: https://github.com/UCF/Faculty-Relations-Theme.git
+Author: SMCA Technology Services
+Github Theme URI: https://github.com/UCF/IKM-Theme.git
 Version: v1.0.0
 */
 
@@ -102,6 +102,9 @@ select#UCFHBHeaderLinks {
 }
 #degree-summary .wrap p {
     font-size: 10px;
+}
+#page-top {
+	margin-bottom: 20px;
 }
 
 .end {clear: both; height: 1px;}
