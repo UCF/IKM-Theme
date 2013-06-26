@@ -166,6 +166,18 @@ select#UCFHBHeaderLinks {
 #footer .info .copyright{margin-top: 1em;}
 #footer .footer-emphasize {font-weight: bold; color:#FCD057}
 
+#sidebar {}
+#sidebar-nav {
+	background-color: #F5F5F5;
+	border: 1px solid #E3E3E3;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+
+
 #below-the-fold{margin-top: 2em; padding-top: 1em;border-top: 1px dotted #666;}
 #below-the-fold h2{font-size: 18px; margin: 0 0 1em 0; padding: 0;}
 
@@ -273,6 +285,7 @@ article h3, h4{margin-top: 20px;}
 .post-type-search-sorting { display: none; }
 
 .post-type-search>.search-toggle-text { position: absolute; top: 15px; right: 235px; z-index: 2 }
+
 #sidebar .post-type-search .search-toggle-text { display: none; }
 
 .post-type-search-header { position: relative; z-index: 1; }
