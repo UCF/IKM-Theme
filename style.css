@@ -464,4 +464,4 @@ article h3, h4{margin-top: 20px;}
 .nav{font-size: 12px;}
 .nav-header{padding: 0px;}
 .nav-list li a:hover {background-color: #F5F5F5;}
-.nav-list > .active > a, .nav-list > .active > a:hover {background-color: #F5F5F5;}
+.nav-list > .active > a, .nav-list > .active > a:hover {background-color: #F5F5F5; color:#0088CC;}
