@@ -48,8 +48,8 @@
                             </div>
                         <?php endif;?>
                     </div>
-					<div class="span3">
-						<span class="footer-menu header">Related Links</span>
+					<div id="footer-menu">
+						<span class="header">Related Links</span>
 					 	<?=wp_nav_menu(array(
 							'theme_location' => 'footer-menu', 
 							'container' => 'false', 
