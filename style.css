@@ -8,6 +8,7 @@ Version: v1.0.0
 body {
     font-size: 15px;
     line-height: 20px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 /* UCF Header Styles */
@@ -154,8 +155,9 @@ select#UCFHBHeaderLinks {
 
 #footer {line-height: 14px; color: #000; font-size: 11px; font-family: Helvetica, Arial, sans-serif; border-top: none; text-align: center; margin-left: auto; margin-right: auto; margin-top: 0px; margin-bottom: 0px; padding-bottom: 10px;}
 #footer-background {background-color: #707070;}
-#footer-menu .header {text-align: left; text-decoration: underline; font-weight: bold; color:#FCD057}
-#footer-menu li {text-align: left; list-style: none;}
+#footer-menu {text-align: left;}
+#footer-menu .header {text-decoration: underline; font-weight: bold; color:#FCD057}
+#footer-menu li {text-align: left; list-style: square;}
 #footer a {color: #000; font-size: 11px; font-family: Helvetica, Arial, sans-serif;}
 #footer-widget-wrap { margin-top: 16px; }
 #footer .ucf{}
@@ -256,10 +258,10 @@ select#UCFHBHeaderLinks {
 .resourcelink-list .resource-link{display: block; background-color: #fff6d2; padding: 5px; margin-top: 5px;}
 .resourcelink-list a{ color: #000;}
 
-#header h1 a {font-weight: 400; font-family: 'TrocchiRegular', Georgia, serif;}
+#header h1 a {font-weight: 400; font-family: 'Georgia', Georgia, serif;}
 #header h1 a:hover {color: #fff;}
 #header {margin-bottom: 0; margin-top: 10px;}
-article h1, h2, h3 {font-weight: 400; font-family: 'TrocchiRegular', Georgia, serif;}
+article h1, h2, h3 {font-weight: 400; font-family: 'Georgia', Georgia, serif;}
 p{font-weight: 400; font-family: Georgia, serif;}
 article h2{margin-top: 15px;}
 article h3, h4{margin-top: 20px;}
