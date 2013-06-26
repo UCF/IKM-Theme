@@ -459,3 +459,7 @@ article h3, h4{margin-top: 20px;}
         background-color: #ffc907;
     }
 }
+
+/* Bootstrap overrides */
+.nav-header{padding: 0px;}
+.nav-list li a:hover {background-color: #F5F5F5;}
