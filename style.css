@@ -154,7 +154,7 @@ select#UCFHBHeaderLinks {
 
 #footer {line-height: 14px; color: #000; font-size: 11px; font-family: Helvetica, Arial, sans-serif; border-top: none; text-align: center; margin-left: auto; margin-right: auto; margin-top: 0px; margin-bottom: 0px; padding-bottom: 10px;}
 #footer-background {background-color: #707070;}
-#footer-menu header {text-align: left; text-decoration: underline;}
+#footer-menu .header {text-align: left; text-decoration: underline; font-weight: bold; color:#FCD057}
 #footer-menu li {text-align: left; list-style: none;}
 #footer a {color: #000; font-size: 11px; font-family: Helvetica, Arial, sans-serif;}
 #footer-widget-wrap { margin-top: 16px; }
