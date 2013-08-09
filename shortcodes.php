@@ -193,6 +193,7 @@ function sc_post_type_search($params=array(), $content='') {
 		'order_by'               => 'title',
 		'order'                  => 'ASC',
 		'show_sorting'           => true,
+		'show_search'			 => false,
 		'default_sorting'        => 'term',
 	);
 
@@ -201,6 +202,7 @@ function sc_post_type_search($params=array(), $content='') {
 	$params['show_empty_sections'] = (bool)$params['show_empty_sections'];
 	$params['column_count']        = is_numeric($params['column_count']) ? (int)$params['column_count'] : $defaults['column_count'];
 	$params['show_sorting']        = (bool)$params['show_sorting'];
+	$params['show-search']		   = (bool)$params['show_search'];
 
 	if(!in_array($params['default_sorting'], array('term', 'alpha', 'document'))) {
 		$params['default_sorting'] = $default['default_sorting'];
@@ -351,7 +353,7 @@ function sc_post_type_search($params=array(), $content='') {
 	
 
 	<div class="post-type-search">
-	<? if (!$params['default_sorting'] == 'document') { ?>
+	<? if ($params['show_search']) { ?>
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label><?=$params['default_search_label']?></label>
