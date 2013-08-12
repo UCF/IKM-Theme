@@ -386,7 +386,7 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 			case 'post-type-search-document':
 				if($params['default_sorting'] == 'term' || $params['default_sorting'] == 'alpha') {
-					$hide = False;
+					$hide = True;
 				}
 				break;				
 		}

@@ -237,9 +237,22 @@ select#UCFHBHeaderLinks {
 .post-type-search-result-highlight {background-color:yellow;border:1px solid #ddd;}
 .post-type-search-message {padding:0 10px 10px 10px;}
 .post-type-search-form {margin-bottom:0;}
-.post-type-search-results {font-size:115%;background-color:#f1f1f1;padding-top:10px;margin-bottom:10px;display:none;}
+.post-type-search-results {
+    background: none repeat scroll 0 0 #FFFDF4 ;
+    border: 1px solid #F9DD8C;
+    box-shadow: 0 0 0 0;
+    margin-left: 0;
+    margin-top: auto;
+    position: relative;
+    width: 100%;
+	border-radius: 5px 5px 5px 5px;
+	overflow: hidden;
+	padding-top: 0;
+	z-index: 2;
+}
 .post-type-search-results li {line-height:150%;}
 .post-type-search-sorting {margin-bottom:5px;}
+.post-type
 
 .pub { display: block; overflow: auto; }
 .pub a img { float: left; margin-bottom: 10px; width: 153px; height: 198px; }
