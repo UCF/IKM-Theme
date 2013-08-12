@@ -284,7 +284,7 @@ article h3, h4{margin-top: 20px;}
 .post-type-search { position: relative; margin-top: 0; z-index: 1; }
 .post-type-search-sorting { display: none; }
 
-.post-type-search>.search-toggle-text { position: absolute; top: 15px; right: 235px; z-index: 2 }
+.post-type-search>.search-toggle-text { position: absolute; top: 15px; right: 250px; z-index: 2 }
 
 #sidebar .post-type-search .search-toggle-text { display: none; }
 
