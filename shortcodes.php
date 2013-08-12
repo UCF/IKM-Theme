@@ -192,7 +192,7 @@ function sc_post_type_search($params=array(), $content='') {
 		'column_count'           => '3',
 		'order_by'               => 'title',
 		'order'                  => 'ASC',
-		'show_sorting'           => true,
+		'show_sorting'           => false,
 		'show_search'			 => false,
 		'default_sorting'        => 'term',
 	);
@@ -386,7 +386,7 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 			case 'post-type-search-document':
 				if($params['default_sorting'] == 'term' || $params['default_sorting'] == 'alpha') {
-					$hide = True;
+					$hide = False;
 				}
 				break;				
 		}
