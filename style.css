@@ -155,11 +155,10 @@ select#UCFHBHeaderLinks {
 
 #footer {line-height: 14px; color: #000; font-size: 11px; font-family: Helvetica, Arial, sans-serif; border-top: none; text-align: center; margin-left: auto; margin-right: auto; margin-top: 0px; margin-bottom: 0px; padding-bottom: 10px;}
 #footer-background {background-color: #707070;}
-#footer-menu {text-align: left;}
+#footer-menu {text-align: left; margin:0;}
 #footer-menu .header {text-decoration: underline; font-weight: bold; color:#FCD057}
-#footer-menu ul {margin:0;}
 #footer-menu li {text-align: left; list-style: none;}
-#footer-meanu li a {color:#ffffff; font-weight:bold;}
+#footer-menu li a {color:#ffffff; font-weight:bold;}
 #footer a {color: #000; font-size: 11px; font-family: Helvetica, Arial, sans-serif;}
 #footer-widget-wrap { margin-top: 16px; }
 #footer .ucf{}
