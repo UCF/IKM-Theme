@@ -48,6 +48,19 @@
                             </div>
                         <?php endif;?>
                     </div>
+					<div class="span3">
+						<span class="footer-emphasize">Related Links</span>
+					 	<?=wp_nav_menu(array(
+							'theme_location' => 'footer-menu', 
+							'container' => 'false', 
+							'menu_class' => 'menu vertical', 
+							'menu_id' => 'footer-menu', 
+							'fallback_cb' => false,
+							'depth' => 1,
+							'walker' => new Bootstrap_Walker_Nav_Menu()
+							));
+						?>
+					</div>
                 </div>
 			</div>
 		</div><!-- container -->
