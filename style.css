@@ -178,7 +178,7 @@ select#UCFHBHeaderLinks {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    border-color: -moz-use-text-color -moz-use-text-color #999999;
+    border-color: #999999;
     border-image: none;
     border-style: none none solid;
     border-width: 2px;	
