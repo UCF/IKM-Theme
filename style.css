@@ -172,7 +172,16 @@ select#UCFHBHeaderLinks {
 	font-size:1.5em; 
 	color:#FCD057; 
 	text-align:left;
-	line-height:14px;
+	line-height:1.5em;
+	margin:0 0 5px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color -moz-use-text-color #999999;
+    border-image: none;
+    border-style: none none solid;
+    border-width: 2px;	
 	}
 
 #sidebar {}
