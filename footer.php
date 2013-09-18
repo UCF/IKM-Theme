@@ -49,7 +49,7 @@
                         <?php endif;?>
                     </div>
 					<div class="span3">
-						<span class="footer-emphasize">Related Links</span>
+						<h3>Resources</h3>
 					 	<?=wp_nav_menu(array(
 							'theme_location' => 'footer-menu', 
 							'container' => 'false', 
