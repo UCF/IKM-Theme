@@ -4,7 +4,6 @@
  * This template only displays the post, no header or footer information
  **/
 ?>
-<?php get_header(); ?>
     <div class="container">
     <?php the_post();?>
         <div class="row page-content" id="<?=$post->post_name?>">
@@ -18,3 +17,4 @@
             </div>
         </div>
     </div>
+	
