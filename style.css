@@ -184,7 +184,7 @@ select#UCFHBHeaderLinks {
     border-width: 2px;	
 	}
 
-#sidebar {}
+#sidebar { height:600px}
 #sidebar-nav {
 	background-color: #F5F5F5;
 	border: 1px solid #E3E3E3;
