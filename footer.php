@@ -48,19 +48,6 @@
                             </div>
                         <?php endif;?>
                     </div>
-					<div class="span3">
-						<h3>Resources</h3>
-					 	<?=wp_nav_menu(array(
-							'theme_location' => 'footer-menu', 
-							'container' => 'false', 
-							'menu_class' => 'menu vertical', 
-							'menu_id' => 'footer-menu', 
-							'fallback_cb' => false,
-							'depth' => 1,
-							'walker' => new Bootstrap_Walker_Nav_Menu()
-							));
-						?>
-					</div>
                 </div>
 			</div>
 		</div><!-- container -->
