@@ -4,6 +4,7 @@ Author: SMCA Technology Services
 Github Theme URI: https://github.com/UCF/IKM-Theme.git
 Version: v1.0.2
 */
+html { background-color: #707070;}
 
 body {
     font-size: 15px;
@@ -184,7 +185,7 @@ select#UCFHBHeaderLinks {
     border-width: 2px;	
 	}
 
-#sidebar { height:600px}
+#sidebar { }
 #sidebar-nav {
 	background-color: #F5F5F5;
 	border: 1px solid #E3E3E3;
