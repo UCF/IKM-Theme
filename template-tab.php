@@ -24,5 +24,5 @@
             </div>
         </div>
     </div>		
-<script type='text/javascript' src='https://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
 <?php get_footer();?>
+<script type='text/javascript' src='https://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
