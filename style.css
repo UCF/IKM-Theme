@@ -11,6 +11,11 @@ body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+/* iframe shortcode style */
+.shortcode_iframe {
+	border: none;
+}
+
 /* UCF Header Styles */
 
 #UCFHBSearch_ucf fieldset #q {
