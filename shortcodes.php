@@ -66,7 +66,7 @@ function sc_iframe($atts, $content) {
 	if (!$atts['width']) { $atts['width'] = 1020; }
  	if (!$atts['height']) { $atts['height'] = 1033; }
 
- 	return '<iframe border="0" class="shortcode_iframe" src="' . $atts['src'] . '" width="' . $atts['width'] . '" height="' . $atts['height'] . '"></iframe>';
+ 	return '<iframe class="shortcode_iframe" src="' . $atts['src'] . '" width="' . $atts['width'] . '" height="' . $atts['height'] . '"></iframe>';
 }
 add_shortcode('iframe','sc_iframe');
 
