@@ -151,7 +151,6 @@ select#UCFHBHeaderLinks {
 #header .social{}
 #header .social.menu.horizontal a{text-indent: -1024px;}
 #header .social.menu.horizontal li:after{content: "";}
-
 #menu-background{background-color: #fdde60;}
 #header-menu a {color: #000; font-size: 13px; font-family: Helvetica, Arial, sans-serif;}
 #header-menu {margin-top: 5px;}
