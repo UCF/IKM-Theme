@@ -7,7 +7,7 @@
                 </div>
                 <div class="row">
 					<div class="span3">
-						<img id="footer-logo" title="UCF 50" alt="UCF 50" src="<?=THEME_IMG_URL?>/50th-220x80.png">
+						<!--<img id="footer-logo" title="UCF 50" alt="UCF 50" src="<?=THEME_IMG_URL?>/50th-220x80.png">-->
 					</div>
                     <div class="span6">
                         <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Two')):?>
