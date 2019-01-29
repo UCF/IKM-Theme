@@ -22,7 +22,7 @@ $(document).ready(function() {
 				withCredentials: true
 			},
 			type: "GET",
-            		url: '/wp-content/themes/ikmtheme/includes/glossary.php',
+            		url: 'http://forms.ikm.ucf.edu/cookbook/glossary.php',
             		dataType: "xml",
 			crossDomain: true,
 			success: function(xml){
