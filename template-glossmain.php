@@ -6,7 +6,7 @@
 <?php get_header(); ?>
     <div class="container">
 	
-	<link rel="stylesheet" type="text/css" href="/wp-content/themes/ikmtheme/third-party/glossary.css"/>
+	<link rel="stylesheet" type="text/css" href="/wp-content/themes/ikmtheme/glossary.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.datatables.net/v/dt/dt-1.10.18/fh-3.1.4/datatables.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.min.js"></script>	
