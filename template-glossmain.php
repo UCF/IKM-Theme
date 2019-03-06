@@ -12,9 +12,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.min.js"></script>	
 	<script src="https://cdn.jsdelivr.net/gh/julmot/datatables.mark.js@2.0.1/dist/datatables.mark.es6.min.js"></script>
 	<script>
-//var url = 'https://ucf.datacookbook.com/institution/terms/list?un=apiuser&pw=3Si2LFc1oNIK&requestType=list&outputFormat=xml&html_definition=true&functionalArea=institutional+knowledge+management&status=latest_approved'
-//var url = 'https://randomuser.me/api/?results=5'
-
 
 $(document).ready(function() {
 		$.ajax({            
@@ -37,36 +34,14 @@ $(document).ready(function() {
 						//var row = document.createElement('tr');
 					
 						var sTitle = $(this).find('Term > name').text();
-						var sDefinition = $(this).find('html-definition').text();
+						var sDefinition = $(this).find('term-functional-definition').text();
 						var sUrl = $(this).find('perma-link-url').text();			
 						
 						sTitle = "<a href="+sUrl+">"+sTitle+"</a>";
-						var row = [ sTitle, sDefinition ]
+						var row = [ sTitle, sDefinition ];
 						definitions.push(row);
 						
 					
-						/*var nameText = document.createTextNode(sTitle);
-						//var defText = document.createTextNode(sDefinition); 
-						//defText.innerHTML = sDefinition;
-						
-						var cell = document.createElement('td');
-						var a = document.createElement('a');
-						a.appendChild(nameText);
-						a.title = sTitle;
-						a.href = sUrl;
-						a.setAttribute("target","_blank");
-						cell.appendChild(a);
-						row.appendChild(cell);
-						//cell.style.width = '10%';
-						
-						var cell = document.createElement('td');
-						cell.innerHTML = sDefinition;
-						//cell.appendChild(defText);
-						row.appendChild(cell);
-						//cell.style.width = '70%';
-					
-
-						elem.appendChild(row);*/
 				   
 					});
 					
