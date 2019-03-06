@@ -13,6 +13,7 @@
 	<script src="https://cdn.jsdelivr.net/gh/julmot/datatables.mark.js@2.0.1/dist/datatables.mark.es6.min.js"></script>
 	<script>
 
+
 $(document).ready(function() {
 		$.ajax({            
 			xhrFields: {
@@ -34,7 +35,7 @@ $(document).ready(function() {
 						//var row = document.createElement('tr');
 					
 						var sTitle = $(this).find('Term > name').text();
-						var sDefinition = $(this).find('term-functional-definition').text();
+						var sDefinition = $(this).find('html-definition').text();
 						var sUrl = $(this).find('perma-link-url').text();			
 						
 						sTitle = "<a href="+sUrl+">"+sTitle+"</a>";
@@ -72,7 +73,13 @@ $(document).ready(function() {
 });
 </script>
 
+<style>
+.defStyle a:link, a:visited, a:hover {
+    text-decoration: none;
+    color: #333;
+}
 
+</style>
 <?php the_post();?>
         <div class="row page-content" id="<?=$post->post_name?>">
             <div class="span12">
@@ -96,7 +103,7 @@ $(document).ready(function() {
   <thead>
     <tr>
       <th scope="col" style="width: 20%; ">Name</th>
-      <th scope="col">Definition</th>
+      <th scope="col"><p class="defStyle">Definition</p></th>
     </tr>
   </thead>
   <tbody></tbody>
