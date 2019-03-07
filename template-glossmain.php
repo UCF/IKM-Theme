@@ -50,6 +50,9 @@ $(document).ready(function() {
 					console.log(definitions);
 					
 					$('#main').DataTable({
+						"columnDefs":[
+							{ className: "defStyle", targets: 1 }
+						], 						
 						"data": definitions,
 						"paging":true,
 						"ordering": false,
@@ -103,7 +106,7 @@ $(document).ready(function() {
   <thead>
     <tr>
       <th scope="col" style="width: 20%; ">Name</th>
-      <th scope="col"><p class="defStyle">Definition</p></th>
+      <th scope="col">Definition</th>
     </tr>
   </thead>
   <tbody></tbody>
