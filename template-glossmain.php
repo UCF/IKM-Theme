@@ -11,9 +11,12 @@
 	<script src="https://cdn.datatables.net/v/dt/dt-1.10.18/fh-3.1.4/datatables.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.min.js"></script>	
 	<script src="https://cdn.jsdelivr.net/gh/julmot/datatables.mark.js@2.0.1/dist/datatables.mark.es6.min.js"></script>
-	<script>
-
-
+	
+	<link type="text/css" href="//gyrocode.github.io/jquery-datatables-alphabetSearch/1.2.5/css/dataTables.alphabetSearch.css" rel="stylesheet" />
+	<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-alphabetSearch/1.2.5/js/dataTables.alphabetSearch.min.js"></script>	
+	
+	
+<script>
 $(document).ready(function() {
 		$.ajax({            
 			xhrFields: {
@@ -57,12 +60,22 @@ $(document).ready(function() {
 						"paging":true,
 						"ordering": false,
 						"mark": true,
-						"dom": '<"top"fip>rt<"bottom"ip><"clear">',
+						"dom":  
+							'<"top"Afip>rt<"bottom"ip><"clear">',
 						"columns": [
 							{"title": "Term"},
 							{"title": "Definition"}
-						]
-					
+						],
+						/*"dom": 'Alfrtip',*/
+					        "alphabetSearch": {
+						 	column: 0
+					      	},
+						
+					      	"initComplete": function( settings, json ){
+						 	      
+					      	},
+						"drawCallback": function(){
+							}					
 					});
 					
 					
@@ -75,14 +88,25 @@ $(document).ready(function() {
     
 });
 </script>
-
 <style>
-.defStyle a:link, a:visited, a:hover {
-    text-decoration: none;
-    color: #333;
-}
+	.defStyle a:link, a:visited, a:hover {
+	    text-decoration: none;
+	    color: #333;
+	}
+	.dataTables_wrapper .dataTables_filter {
+	   float: left !important;
+	   padding: 10px 0 0 0;
+	}
+	.dataTables_wrapper .dataTables_paginate{
+		padding: 3px;
+	}
+	table.dataTable tbody tr.alphabet-group td{
+		padding: 4px 0px 4px 5px;
+		font-size: 13px;
+	}	
+	
+	</style>
 
-</style>
 <?php the_post();?>
         <div class="row page-content" id="<?=$post->post_name?>">
             <div class="span12">
