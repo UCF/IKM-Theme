@@ -57,11 +57,13 @@ $(document).ready(function() {
 							{ className: "defStyle", targets: 1 }
 						], 						
 						"data": definitions,
+						"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Show All"]],
 						"paging":true,
+						"pagingType": "simple_numbers",
 						"ordering": false,
 						"mark": true,
 						"dom":  
-							'<"top"Afip>rt<"bottom"ip><"clear">',
+							'<"top"Aflp>rt<"bottom"ip><"clear">',
 						"columns": [
 							{"title": "Term"},
 							{"title": "Definition"}
@@ -99,6 +101,14 @@ $(document).ready(function() {
 	}
 	.dataTables_wrapper .dataTables_paginate{
 		padding: 3px;
+	}
+	.dataTables_wrapper .dataTables_length {
+		clear: both;		
+		float: left;
+	   	padding: 10px 0 0 0;
+	}	
+	.dataTables_wrapper .dataTables_length select {
+		width: auto;
 	}
 	table.dataTable tbody tr.alphabet-group td{
 		padding: 4px 0px 4px 5px;
