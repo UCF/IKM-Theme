@@ -35,17 +35,27 @@ $(document).ready(function() {
 				var elem = document.getElementById("main");
 			
 					$(xml).find('Term').each(function(){
-						//var row = document.createElement('tr');
-					
-						var sTitle = $(this).find('Term > name').text();
-						var sDefinition = $(this).find('html-definition').text();
-						var sUrl = $(this).find('perma-link-url').text();			
+						var sPublic = '';
+
+						//to handle multiple tags
+						x = $(this).find('Term > tags > tag > name');
+						for (i = 0; i < x.length; i++) {
+							if (x[i].childNodes[0].nodeValue == 'Public'){
+								sPublic = 'Public';				
+							}
+						}	
 						
-						sTitle = "<a href="+sUrl+">"+sTitle+"</a>";
-						var row = [ sTitle, sDefinition ];
-						definitions.push(row);
-						
-					
+						//Only show terms that have been tagged as public
+						if (sPublic == 'Public'){
+							var sTitle = $(this).find('Term > name').text();
+							var sDefinition = $(this).find('html-definition').text();
+							var sUrl = $(this).find('perma-link-url').text();			
+							
+							/* sTitle = "<a href="+sUrl+">"+sTitle+"</a>";*/
+							
+							var row = [ sTitle, sDefinition ];
+							definitions.push(row);
+						}					
 				   
 					});
 					
@@ -55,9 +65,9 @@ $(document).ready(function() {
 					$('#main').DataTable({
 						"columnDefs":[
 							{ className: "defStyle", targets: 1 }
-						], 						
+						], 												
 						"data": definitions,
-						"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Show All"]],
+						"lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Show All"]],
 						"paging":true,
 						"pagingType": "simple_numbers",
 						"ordering": false,
